@@ -17,46 +17,85 @@ if (!defined('ABSPATH')) {
 
 // Main plugin class
 if ( ! class_exists('BM_SRER')) {
-  class BM_SRER{
-    function __construct() {
-      $this->define_constants();
+    class BM_SRER{
+        function __construct() {
+            $this->define_constants();
 
-      require_once BM_SRER_PATH . 'post-types/class.bm-simple-real-estate-cpt.php';
+            add_action( 'admin_menu', array($this, 'add_admnin_menu') );
 
-      $BM_SRER_Post_Types = new BM_SRER_Post_Types();
+            require_once BM_SRER_PATH . 'post-types/class.bm-simple-real-estate-cpt.php';
+
+            $BM_SRER_Post_Types = new BM_SRER_Post_Types();
+        }
+        public function define_constants() {
+            define( 'BM_SRER_PATH', plugin_dir_path(__FILE__));
+            define( 'BM_SRER_URL', plugin_dir_url(__FILE__));
+            define( 'BM_SRER_VERSION', '1.0.0');
+        }
+
+        public static function activate() {
+            // Clear the rewrite rules for custom post types to work
+            update_option( 'rewrite_rules', '' );
+        }
+
+        public static function deactivate() {
+            // flush rewrite rules on plugin deactivation
+            flush_rewrite_rules();
+            
+            // Unregister the post types
+            unregister_post_type('rent');
+            unregister_post_type('buy');
+        }
+
+        public static function uninstall() {
+
+        }
+
+        // Adds menu item to the admin dashboard
+        public function add_admnin_menu() {
+            add_menu_page(
+                'Simple Real Estate',
+                'Simple Real Estate',
+                'manage_options',
+                'bm_srer_admimn',
+                array($this, 'bm_srer_admin_page'),
+                'dashicons-admin-home',
+            );
+
+            add_submenu_page(
+                'bm_srer_admimn',
+                'Rent',
+                'Rent',
+                'manage_options',
+                'edit.php?post_type=rent',
+                null,
+                null
+            );
+
+            add_submenu_page(
+                'bm_srer_admimn',
+                'Buy',
+                'Buy',
+                'manage_options',
+                'edit.php?post_type=buy',
+                null,
+                null
+            );
+        }
+
+        // Admin page callback
+        public function bm_srer_admin_page() {
+            echo '<h1>Simple Real Estate</h1>';
+        }
     }
-    public function define_constants() {
-      define( 'BM_SRER_PATH', plugin_dir_path(__FILE__));
-      define( 'BM_SRER_URL', plugin_dir_url(__FILE__));
-      define( 'BM_SRER_VERSION', '1.0.0');
-    }
-
-    public static function activate() {
-      // Clear the rewrite rules for custom post types to work
-      update_option( 'rewrite_rules', '' );
-    }
-
-    public static function deactivate() {
-      // flush rewrite rules on plugin deactivation
-      flush_rewrite_rules();
-      
-      // Unregister the post types
-      unregister_post_type('rent');
-      unregister_post_type('buy');
-    }
-
-    public static function uninstall() {
-
-    }
-  }
 };
 
 if (class_exists('BM_SRER')) {
-  register_activation_hook(__FILE__, array('BM_SRER', 'activate'));
-  register_deactivation_hook(__FILE__, array('BM_SRER', 'deactivate'));
-  register_uninstall_hook(__FILE__, array('BM_SRER', 'uninstall'));
+    register_activation_hook(__FILE__, array('BM_SRER', 'activate'));
+    register_deactivation_hook(__FILE__, array('BM_SRER', 'deactivate'));
+    register_uninstall_hook(__FILE__, array('BM_SRER', 'uninstall'));
 
-  $bm_srer = new BM_SRER();
+    $bm_srer = new BM_SRER();
 }
 
 // Shortcodes

@@ -41,7 +41,7 @@ $property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalo
 </style>
 
 <div class="bm-srer-meta-box">
-    <label for="bm_srer_property_type"><?php __('Property Type:', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_property_type"><?php echo esc_html__('Property Type:', 'bm-simple-real-estate'); ?></label>
     <select multiple id="bm_srer_property_type" name="bm_srer_property_type[]" class="multiple-select">
         <?php foreach ($property_types as $type) : ?>
             <option value="<?php echo esc_attr($type); ?>" <?php echo in_array($type, (array) $property_type) ? 'selected' : ''; ?>>
@@ -50,22 +50,22 @@ $property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalo
         <?php endforeach; ?>
     </select>
 
-    <label for="bm_srer_address"><?php __('Address:', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_address"><?php echo esc_html__('Address:', 'bm-simple-real-estate'); ?></label>
     <input type="text" id="bm_srer_address" name="bm_srer_address" value="<?php echo esc_attr($address); ?>" />
 
-    <label for="bm_srer_price"><?php __('Price:', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_price"><?php echo esc_html__('Price:', 'bm-simple-real-estate'); ?></label>
     <input type="number" id="bm_srer_price" name="bm_srer_price" value="<?php echo esc_attr($price); ?>" />
 
-    <label for="bm_srer_rooms"><?php __('Rooms:', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_rooms"><?php echo esc_html__('Rooms:', 'bm-simple-real-estate'); ?></label>
     <input type="number" id="bm_srer_rooms" name="bm_srer_rooms" value="<?php echo esc_attr($rooms); ?>" />
 
-    <label for="bm_srer_area"><?php __('Area (sq ft):', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_area"><?php echo esc_html__('Area (sq ft):', 'bm-simple-real-estate'); ?></label>
     <input type="number" id="bm_srer_area" name="bm_srer_area" value="<?php echo esc_attr($area); ?>" />
 
-    <label for="bm_srer_floor"><?php __('Floor:', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_floor"><?php echo esc_html__('Floor:', 'bm-simple-real-estate'); ?></label>
     <input type="number" id="bm_srer_floor" name="bm_srer_floor" value="<?php echo esc_attr($floor); ?>" />
 
-    <label for="bm_srer_building_age"><?php __('Building Age (years):', 'bm-simple-real-estate'); ?></label>
+    <label for="bm_srer_building_age"><?php echo esc_html__('Building Age (years):', 'bm-simple-real-estate'); ?></label>
     <input type="number" id="bm_srer_building_age" name="bm_srer_building_age" value="<?php echo esc_attr($building_age); ?>" />
 </div>
 
