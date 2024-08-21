@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Simple Real Estate
-Plugin URI: https://bogazicimedya.com
+Plugin URI: https://aliyagmur.me/plugins/ay-simple-real-estate
 Description: A simple real estate plugin for managing rental and buying listings.
 Version: 1.0
 Author: Ali Yagmur
-Author URI: https://bogazicimedya.com
-Text Domain: bm-simple-real-estate
+Author URI: https://aliyagmur.me
+Text Domain: ay-simple-real-estate
 Domain Path: /languages
 */
 
@@ -16,21 +16,21 @@ if (!defined('ABSPATH')) {
 }
 
 // Main plugin class
-if ( ! class_exists('BM_SRER')) {
-    class BM_SRER{
+if ( ! class_exists('AY_SRER')) {
+    class AY_SRER{
         function __construct() {
             $this->define_constants();
 
             add_action( 'admin_menu', array($this, 'add_admnin_menu') );
 
-            require_once BM_SRER_PATH . 'post-types/class.bm-simple-real-estate-cpt.php';
+            require_once AY_SRER_PATH . 'post-types/class.ay-simple-real-estate-cpt.php';
 
-            $BM_SRER_Post_Types = new BM_SRER_Post_Types();
+            $AY_SRER_Post_Types = new AY_SRER_Post_Types();
         }
         public function define_constants() {
-            define( 'BM_SRER_PATH', plugin_dir_path(__FILE__));
-            define( 'BM_SRER_URL', plugin_dir_url(__FILE__));
-            define( 'BM_SRER_VERSION', '1.0.0');
+            define( 'AY_SRER_PATH', plugin_dir_path(__FILE__));
+            define( 'AY_SRER_URL', plugin_dir_url(__FILE__));
+            define( 'AY_SRER_VERSION', '1.0.0');
         }
 
         public static function activate() {
@@ -57,13 +57,13 @@ if ( ! class_exists('BM_SRER')) {
                 'Simple Real Estate',
                 'Simple Real Estate',
                 'manage_options',
-                'bm_srer_admimn',
-                array($this, 'bm_srer_admin_page'),
+                'ay_srer_admimn',
+                array($this, 'ay_srer_admin_page'),
                 'dashicons-admin-home',
             );
 
             add_submenu_page(
-                'bm_srer_admimn',
+                'ay_srer_admimn',
                 'Rent',
                 'Rent',
                 'manage_options',
@@ -73,7 +73,7 @@ if ( ! class_exists('BM_SRER')) {
             );
 
             add_submenu_page(
-                'bm_srer_admimn',
+                'ay_srer_admimn',
                 'Buy',
                 'Buy',
                 'manage_options',
@@ -84,71 +84,71 @@ if ( ! class_exists('BM_SRER')) {
         }
 
         // Admin page callback
-        public function bm_srer_admin_page() {
+        public function ay_srer_admin_page() {
             echo '<h1>Simple Real Estate</h1>';
         }
     }
 };
 
-if (class_exists('BM_SRER')) {
-    register_activation_hook(__FILE__, array('BM_SRER', 'activate'));
-    register_deactivation_hook(__FILE__, array('BM_SRER', 'deactivate'));
-    register_uninstall_hook(__FILE__, array('BM_SRER', 'uninstall'));
+if (class_exists('AY_SRER')) {
+    register_activation_hook(__FILE__, array('AY_SRER', 'activate'));
+    register_deactivation_hook(__FILE__, array('AY_SRER', 'deactivate'));
+    register_uninstall_hook(__FILE__, array('AY_SRER', 'uninstall'));
 
-    $bm_srer = new BM_SRER();
+    $ay_srer = new AY_SRER();
 }
 
 // Shortcodes
-function bm_srer_shortcode_price() {
+function ay_srer_shortcode_price() {
     global $post;
-    $price = get_post_meta($post->ID, '_bm_srer_price', true);
+    $price = get_post_meta($post->ID, '_ay_srer_price', true);
     return $price ? esc_html($price) : '';
 }
-add_shortcode('property_price', 'bm_srer_shortcode_price');
+add_shortcode('property_price', 'ay_srer_shortcode_price');
 
-function bm_srer_shortcode_rooms() {
+function ay_srer_shortcode_rooms() {
     global $post;
-    $rooms = get_post_meta($post->ID, '_bm_srer_rooms', true);
+    $rooms = get_post_meta($post->ID, '_ay_srer_rooms', true);
     return $rooms ? esc_html($rooms) : '';
 }
-add_shortcode('property_rooms', 'bm_srer_shortcode_rooms');
+add_shortcode('property_rooms', 'ay_srer_shortcode_rooms');
 
-function bm_srer_shortcode_address() {
+function ay_srer_shortcode_address() {
     global $post;
-    $address = get_post_meta($post->ID, '_bm_srer_address', true);
+    $address = get_post_meta($post->ID, '_ay_srer_address', true);
     return $address ? esc_html($address) : '';
 }
-add_shortcode('property_address', 'bm_srer_shortcode_address');
+add_shortcode('property_address', 'ay_srer_shortcode_address');
 
-function bm_srer_shortcode_area() {
+function ay_srer_shortcode_area() {
     global $post;
-    $area = get_post_meta($post->ID, '_bm_srer_area', true);
+    $area = get_post_meta($post->ID, '_ay_srer_area', true);
     return $area ? esc_html($area) : '';
 }
-add_shortcode('property_area', 'bm_srer_shortcode_area');
+add_shortcode('property_area', 'ay_srer_shortcode_area');
 
-function bm_srer_shortcode_floor() {
+function ay_srer_shortcode_floor() {
     global $post;
-    $floor = get_post_meta($post->ID, '_bm_srer_floor', true);
+    $floor = get_post_meta($post->ID, '_ay_srer_floor', true);
     return $floor ? esc_html($floor) : '';
 }
-add_shortcode('property_floor', 'bm_srer_shortcode_floor');
+add_shortcode('property_floor', 'ay_srer_shortcode_floor');
 
-function bm_srer_shortcode_building_age() {
+function ay_srer_shortcode_building_age() {
     global $post;
-    $building_age = get_post_meta($post->ID, '_bm_srer_building_age', true);
+    $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
     return $building_age ? esc_html($building_age) : '';
 }
-add_shortcode('property_building_age', 'bm_srer_shortcode_building_age');
+add_shortcode('property_building_age', 'ay_srer_shortcode_building_age');
 
-function bm_srer_shortcode_property_type() {
+function ay_srer_shortcode_property_type() {
     global $post;
-    $types = get_post_meta($post->ID, '_bm_srer_property_type', true);
+    $types = get_post_meta($post->ID, '_ay_srer_property_type', true);
     return is_array($types) ? implode(', ', array_map('esc_html', $types)) : '';
 }
-add_shortcode('property_type', 'bm_srer_shortcode_property_type');
+add_shortcode('property_type', 'ay_srer_shortcode_property_type');
 
-function bm_srer_shortcode_city() {
+function ay_srer_shortcode_city() {
     global $post;
     $terms = get_the_terms($post->ID, 'city');
     if ($terms && !is_wp_error($terms)) {
@@ -160,9 +160,9 @@ function bm_srer_shortcode_city() {
     }
     return '';
 }
-add_shortcode('property_city', 'bm_srer_shortcode_city');
+add_shortcode('property_city', 'ay_srer_shortcode_city');
 
-function bm_srer_shortcode_features() {
+function ay_srer_shortcode_features() {
     global $post;
     $terms = get_the_terms($post->ID, 'feature');
     if ($terms && !is_wp_error($terms)) {
@@ -174,16 +174,16 @@ function bm_srer_shortcode_features() {
     }
     return '';
 }
-add_shortcode('property_features', 'bm_srer_shortcode_features');
+add_shortcode('property_features', 'ay_srer_shortcode_features');
 
 // Search form shortcode
-function bm_srer_search_form() {
+function ay_srer_search_form() {
     $cities = get_terms(['taxonomy' => 'city', 'hide_empty' => false]);
     ?>
-    <form id="bm-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
+    <form id="ay-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
         <div class="form-col">
             <div class="form-group">
-                <label for="city"><?php _e('City', 'bm-simple-real-estate'); ?></label>
+                <label for="city"><?php _e('City', 'ay-simple-real-estate'); ?></label>
                 <select name="city[]" multiple>
                     <?php foreach ($cities as $city): ?>
                         <option value="<?php echo esc_attr($city->slug); ?>"><?php echo esc_html($city->name); ?></option>
@@ -191,43 +191,43 @@ function bm_srer_search_form() {
                 </select>
             </div>
             <div class="form-group">
-                <label for="rooms"><?php _e('Rooms', 'bm-simple-real-estate'); ?></label>
+                <label for="rooms"><?php _e('Rooms', 'ay-simple-real-estate'); ?></label>
                 <input type="number" name="rooms" min="0">
             </div>
             <div class="form-group">
-                <label for="price-min"><?php _e('Min Price', 'bm-simple-real-estate'); ?></label>
+                <label for="price-min"><?php _e('Min Price', 'ay-simple-real-estate'); ?></label>
                 <input type="number" name="price-min" min="0">
             </div>
             <div class="form-group">
-                <label for="price-max"><?php _e('Max Price', 'bm-simple-real-estate'); ?></label>
+                <label for="price-max"><?php _e('Max Price', 'ay-simple-real-estate'); ?></label>
                 <input type="number" name="price-max" min="0">
             </div>
             <div class="form-group">
-                <label for="s"><?php _e('Keywords', 'bm-simple-real-estate'); ?></label>
+                <label for="s"><?php _e('Keywords', 'ay-simple-real-estate'); ?></label>
                 <input type="text" name="s">
             </div>
 
             <div class="form-group">
-                <label for="property-type"><?php _e('Rent or Buy', 'bm-simple-real-estate'); ?></label>
+                <label for="property-type"><?php _e('Rent or Buy', 'ay-simple-real-estate'); ?></label>
                 <select name="property-type">
-                    <option value=""><?php _e('Both', 'bm-simple-real-estate'); ?></option>
-                    <option value="rent"><?php _e('Rent', 'bm-simple-real-estate'); ?></option>
-                    <option value="buy"><?php _e('Buy', 'bm-simple-real-estate'); ?></option>
+                    <option value=""><?php _e('Both', 'ay-simple-real-estate'); ?></option>
+                    <option value="rent"><?php _e('Rent', 'ay-simple-real-estate'); ?></option>
+                    <option value="buy"><?php _e('Buy', 'ay-simple-real-estate'); ?></option>
                 </select>
             </div>
             <br>
             <div class="form-group">
-                <button type="submit"><?php _e('Search', 'bm-simple-real-estate'); ?></button>
+                <button type="submit"><?php _e('Search', 'ay-simple-real-estate'); ?></button>
             </div>
         </div>
     </form>
 
     <?php
 }
-add_shortcode('bm_srer_search_form', 'bm_srer_search_form');
+add_shortcode('ay_srer_search_form', 'ay_srer_search_form');
 
 // Search function
-function bm_srer_filter_search_query($query) {
+function ay_srer_filter_search_query($query) {
     if ($query->is_main_query() && !is_admin() && $query->is_search()) {
 
         // Handle property type filter
@@ -255,7 +255,7 @@ function bm_srer_filter_search_query($query) {
         if ($rooms) {
             $meta_query = $query->get('meta_query') ?: [];
             $meta_query[] = [
-                'key' => '_bm_srer_rooms',
+                'key' => '_ay_srer_rooms',
                 'value' => $rooms,
                 'compare' => '==',
                 'type' => 'NUMERIC'
@@ -270,7 +270,7 @@ function bm_srer_filter_search_query($query) {
 
         if ($price_min) {
             $price_meta_query[] = [
-                'key' => '_bm_srer_price',
+                'key' => '_ay_srer_price',
                 'value' => $price_min,
                 'compare' => '>=',
                 'type' => 'NUMERIC',
@@ -279,7 +279,7 @@ function bm_srer_filter_search_query($query) {
 
         if ($price_max) {
             $price_meta_query[] = [
-                'key' => '_bm_srer_price',
+                'key' => '_ay_srer_price',
                 'value' => $price_max,
                 'compare' => '<=',
                 'type' => 'NUMERIC',
@@ -293,11 +293,11 @@ function bm_srer_filter_search_query($query) {
         }
     }
 }
-add_action('pre_get_posts', 'bm_srer_filter_search_query');
+add_action('pre_get_posts', 'ay_srer_filter_search_query');
 
 
 // Load plugin textdomain
-function bm_srer_load_textdomain() {
-    load_plugin_textdomain('bm-simple-real-estate', false, dirname(plugin_basename(__FILE__)) . '/languages');
+function ay_srer_load_textdomain() {
+    load_plugin_textdomain('ay-simple-real-estate', false, dirname(plugin_basename(__FILE__)) . '/languages');
 }
-add_action('plugins_loaded', 'bm_srer_load_textdomain');
+add_action('plugins_loaded', 'ay_srer_load_textdomain');
