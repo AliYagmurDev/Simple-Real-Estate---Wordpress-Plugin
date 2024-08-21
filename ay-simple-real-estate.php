@@ -24,8 +24,10 @@ if ( ! class_exists('AY_SRER')) {
             add_action( 'admin_menu', array($this, 'add_admnin_menu') );
 
             require_once AY_SRER_PATH . 'post-types/class.ay-simple-real-estate-cpt.php';
-
             $AY_SRER_Post_Types = new AY_SRER_Post_Types();
+
+            require_once AY_SRER_PATH . 'class.ay-simple-real-estate-settings.php';
+            $AY_SRER_Settings = new AY_SRER_Settings();
         }
         public function define_constants() {
             define( 'AY_SRER_PATH', plugin_dir_path(__FILE__));
@@ -85,7 +87,7 @@ if ( ! class_exists('AY_SRER')) {
 
         // Admin page callback
         public function ay_srer_admin_page() {
-            echo '<h1>Simple Real Estate</h1>';
+            require( AY_SRER_PATH . 'views/settings-page.php' );
         }
     }
 };
