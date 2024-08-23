@@ -14,6 +14,7 @@ $property_type = get_post_meta($post->ID, '_ay_srer_property_type', true);
 $property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalow', 'Detached House');
 ?>
 
+<!-- Styling should not be here -->
 <style>
     .ay-srer-meta-box { 
         padding: 15px; 
@@ -40,6 +41,7 @@ $property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalo
     }
 </style>
 
+<!-- The new meta boxes as shown in the editor page of property posts -->
 <div class="ay-srer-meta-box">
     <label for="ay_srer_property_type"><?php echo esc_html__('Property Type:', 'ay-simple-real-estate'); ?></label>
     <select multiple id="ay_srer_property_type" name="ay_srer_property_type[]" class="multiple-select">
