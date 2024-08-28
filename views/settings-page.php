@@ -6,6 +6,7 @@
         <?php
             settings_fields( 'ay_srer_group' );
             do_settings_sections( 'ay_srer_settings_page' );
+            do_settings_sections( 'ay_srer_settings_page_2' );
             submit_button( 'Save Settings' );
         ?>
     </form>
