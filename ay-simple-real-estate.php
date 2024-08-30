@@ -28,6 +28,9 @@ if ( ! class_exists('AY_SRER')) {
 
             require_once AY_SRER_PATH . 'class.ay-simple-real-estate-settings.php';
             $AY_SRER_Settings = new AY_SRER_Settings();
+
+            require_once AY_SRER_PATH . 'shortcodes/class.ay-simple-real-estate-shortcode.php';
+            $AY_SRER_Shortcode = new AY_SRER_Shortcode();
         }
         public function define_constants() {
             define( 'AY_SRER_PATH', plugin_dir_path(__FILE__));
@@ -100,133 +103,6 @@ if (class_exists('AY_SRER')) {
     $ay_srer = new AY_SRER();
 }
 
-// Shortcodes
-function ay_srer_shortcode_price() {
-    global $post;
-    $price = get_post_meta($post->ID, '_ay_srer_price', true);
-    return $price ? esc_html($price) : '';
-}
-add_shortcode('property_price', 'ay_srer_shortcode_price');
-
-function ay_srer_shortcode_rooms() {
-    global $post;
-    $rooms = get_post_meta($post->ID, '_ay_srer_rooms', true);
-    return $rooms ? esc_html($rooms) : '';
-}
-add_shortcode('property_rooms', 'ay_srer_shortcode_rooms');
-
-function ay_srer_shortcode_address() {
-    global $post;
-    $address = get_post_meta($post->ID, '_ay_srer_address', true);
-    return $address ? esc_html($address) : '';
-}
-add_shortcode('property_address', 'ay_srer_shortcode_address');
-
-function ay_srer_shortcode_area() {
-    global $post;
-    $area = get_post_meta($post->ID, '_ay_srer_area', true);
-    return $area ? esc_html($area) : '';
-}
-add_shortcode('property_area', 'ay_srer_shortcode_area');
-
-function ay_srer_shortcode_floor() {
-    global $post;
-    $floor = get_post_meta($post->ID, '_ay_srer_floor', true);
-    return $floor ? esc_html($floor) : '';
-}
-add_shortcode('property_floor', 'ay_srer_shortcode_floor');
-
-function ay_srer_shortcode_building_age() {
-    global $post;
-    $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
-    return $building_age ? esc_html($building_age) : '';
-}
-add_shortcode('property_building_age', 'ay_srer_shortcode_building_age');
-
-function ay_srer_shortcode_property_type() {
-    global $post;
-    $types = get_post_meta($post->ID, '_ay_srer_property_type', true);
-    return is_array($types) ? implode(', ', array_map('esc_html', $types)) : '';
-}
-add_shortcode('property_type', 'ay_srer_shortcode_property_type');
-
-function ay_srer_shortcode_city() {
-    global $post;
-    $terms = get_the_terms($post->ID, 'city');
-    if ($terms && !is_wp_error($terms)) {
-        $city_names = array();
-        foreach ($terms as $term) {
-            $city_names[] = $term->name;
-        }
-        return implode(', ', $city_names);
-    }
-    return '';
-}
-add_shortcode('property_city', 'ay_srer_shortcode_city');
-
-function ay_srer_shortcode_features() {
-    global $post;
-    $terms = get_the_terms($post->ID, 'feature');
-    if ($terms && !is_wp_error($terms)) {
-        $feature_names = array();
-        foreach ($terms as $term) {
-            $feature_names[] = $term->name;
-        }
-        return implode('<br>', $feature_names);
-    }
-    return '';
-}
-add_shortcode('property_features', 'ay_srer_shortcode_features');
-
-// Search form shortcode
-function ay_srer_search_form() {
-    $cities = get_terms(['taxonomy' => 'city', 'hide_empty' => false]);
-    ?>
-    <form id="ay-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
-        <div class="form-col">
-            <div class="form-group">
-                <label for="city"><?php _e('City', 'ay-simple-real-estate'); ?></label>
-                <select name="city[]" multiple>
-                    <?php foreach ($cities as $city): ?>
-                        <option value="<?php echo esc_attr($city->slug); ?>"><?php echo esc_html($city->name); ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="rooms"><?php _e('Rooms', 'ay-simple-real-estate'); ?></label>
-                <input type="number" name="rooms" min="0">
-            </div>
-            <div class="form-group">
-                <label for="price-min"><?php _e('Min Price', 'ay-simple-real-estate'); ?></label>
-                <input type="number" name="price-min" min="0">
-            </div>
-            <div class="form-group">
-                <label for="price-max"><?php _e('Max Price', 'ay-simple-real-estate'); ?></label>
-                <input type="number" name="price-max" min="0">
-            </div>
-            <div class="form-group">
-                <label for="s"><?php _e('Keywords', 'ay-simple-real-estate'); ?></label>
-                <input type="text" name="s">
-            </div>
-
-            <div class="form-group">
-                <label for="property-type"><?php _e('Rent or Buy', 'ay-simple-real-estate'); ?></label>
-                <select name="property-type">
-                    <option value=""><?php _e('Both', 'ay-simple-real-estate'); ?></option>
-                    <option value="rent"><?php _e('Rent', 'ay-simple-real-estate'); ?></option>
-                    <option value="buy"><?php _e('Buy', 'ay-simple-real-estate'); ?></option>
-                </select>
-            </div>
-            <br>
-            <div class="form-group">
-                <button type="submit"><?php _e('Search', 'ay-simple-real-estate'); ?></button>
-            </div>
-        </div>
-    </form>
-
-    <?php
-}
-add_shortcode('ay_srer_search_form', 'ay_srer_search_form');
 
 // Search function
 function ay_srer_filter_search_query($query) {
