@@ -112,6 +112,24 @@ class AY_SRER_Post_Types{
         return;
     }
 
+    if (isset($_POST['ay_srer_city']) && isset($_POST['ay_srer_sub_city'])) {
+        $parent_city_id = intval($_POST['ay_srer_city']);
+        $sub_city_id = intval($_POST['ay_srer_sub_city']);
+
+        $city_terms = array();
+
+        if ($parent_city_id) {
+            $city_terms[] = $parent_city_id;
+        }
+
+        if ($sub_city_id) {
+            $city_terms[] = $sub_city_id;
+        }
+        if (!empty($city_terms)) {
+            wp_set_post_terms($post_id, $city_terms, 'city');
+        }
+    }
+
     if (isset($_POST['ay_srer_price'])) {
         update_post_meta($post_id, '_ay_srer_price', sanitize_text_field($_POST['ay_srer_price']));
     }

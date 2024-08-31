@@ -12,9 +12,52 @@ $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
 $property_type = get_post_meta($post->ID, '_ay_srer_property_type', true);
 
 $property_types = array(__('Apartment', 'ay-simple-real-estate'), __('Villa', 'ay-simple-real-estate'), __('Penthouse', 'ay-simple-real-estate'), __('Residence', 'ay-simple-real-estate'), __('Bungalow', 'ay-simple-real-estate'), __('Detached House', 'ay-simple-real-estate'));
+
+// create a variable that retrieves all taxonomy values from city taxonomy that doesnt have any parent
+$cities = get_terms(array(
+    'taxonomy' => 'city',
+    'hide_empty' => false,
+    'parent' => 0
+));
+
+// Get all cities, including both parents and sub-cities
+$all_cities = get_terms(array(
+    'taxonomy'   => 'city',
+    'hide_empty' => false,
+));
+
+// Prepare the sub-cities in an associative array for easier access in JavaScript
+$sub_cities_by_parent = array();
+foreach ($all_cities as $city) {
+    if ($city->parent != 0) {
+        $sub_cities_by_parent[$city->parent][] = $city;
+    }
+};
+
+// Retrieve the selected terms for the current post
+$selected_cities = get_the_terms($post->ID, 'city');
+
+// Initialize variables for selected parent and sub city IDs
+$selected_parent_city_id = '';
+$selected_sub_city_id = '';
+
+if ($selected_cities && !is_wp_error($selected_cities)) {
+    foreach ($selected_cities as $selected_city) {
+        if ($selected_city->parent == 0) {
+            // This is a parent city
+            $selected_parent_city_id = $selected_city->term_id;
+        } else {
+            // This is a sub city
+            $selected_sub_city_id = $selected_city->term_id;
+            // Additionally, set the parent city ID if the sub city is selected
+            $selected_parent_city_id = $selected_city->parent;
+        }
+    }
+}
+
 ?>
 
-<!-- Styling should not be here -->
+<!-- Styling should not be here, I know. But I find it easy to well, find stuff related to eachother, next to eachother -->
 <style>
     .ay-srer-meta-box { 
         padding: 15px; 
@@ -48,6 +91,69 @@ $property_types = array(__('Apartment', 'ay-simple-real-estate'), __('Villa', 'a
             </option>
         <?php endforeach; ?>
     </select>
+
+
+    <!-- Here starts the dynamic address input -->
+
+    <label for="ay_srer_city"><?php echo esc_html__('City:', 'ay-simple-real-estate'); ?></label>
+    <select id="ay_srer_city" name="ay_srer_city">
+        <option value=""><?php echo esc_html__('Select a city', 'ay-simple-real-estate'); ?></option>
+        <?php foreach ($cities as $city) : ?>
+            <option value="<?php echo esc_attr($city->term_id); ?>" <?php echo selected($city->term_id, $selected_parent_city_id); ?>>
+                <?php echo esc_html($city->name); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <label for="ay_srer_sub_city"><?php echo esc_html__('District:', 'ay-simple-real-estate'); ?></label>
+    <select id="ay_srer_sub_city" name="ay_srer_sub_city">
+        <option value=""><?php echo esc_html__('Select a district', 'ay-simple-real-estate'); ?></option>
+        <!-- Sub cities will be populated here dynamically -->
+    </select>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sub-cities data from PHP
+            var subCitiesByParent = <?php echo json_encode($sub_cities_by_parent); ?>;
+            
+            // Get the dropdown elements
+            var citySelect = document.getElementById('ay_srer_city');
+            var subCitySelect = document.getElementById('ay_srer_sub_city');
+
+            // Function to update sub cities dropdown
+            function updateSubCities(parentCityId) {
+                // Clear previous options
+                subCitySelect.innerHTML = '<option value=""><?php echo esc_html__('Select a district', 'ay-simple-real-estate'); ?></option>';
+                
+                // Check if sub cities exist for the selected parent city
+                if (subCitiesByParent[parentCityId]) {
+                    subCitiesByParent[parentCityId].forEach(function(subCity) {
+                        var option = document.createElement('option');
+                        option.value = subCity.term_id;
+                        option.textContent = subCity.name;
+                        if (subCity.term_id == '<?php echo esc_js($selected_sub_city_id); ?>') {
+                            option.selected = true; // Mark the correct sub city as selected
+                        }
+                        subCitySelect.appendChild(option);
+                    });
+                }
+            }
+
+            // Initially update sub cities dropdown if a parent city is already selected
+            var initialCityId = citySelect.value;
+            if (initialCityId) {
+                updateSubCities(initialCityId);
+            }
+
+            // Listen for changes in the city dropdown
+            citySelect.addEventListener('change', function() {
+                var selectedCityId = citySelect.value;
+                updateSubCities(selectedCityId);
+            });
+        });
+    </script>
+
+    <!-- Here ends the dynamic address input -->
 
     <label for="ay_srer_address"><?php echo esc_html__('Address:', 'ay-simple-real-estate'); ?></label>
     <input type="text" id="ay_srer_address" name="ay_srer_address" value="<?php echo esc_attr($address); ?>" />
