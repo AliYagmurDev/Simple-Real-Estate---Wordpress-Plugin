@@ -26,6 +26,9 @@ if ( ! class_exists('AY_SRER')) {
             require_once AY_SRER_PATH . 'post-types/class.ay-simple-real-estate-cpt.php';
             $AY_SRER_Post_Types = new AY_SRER_Post_Types();
 
+            require_once AY_SRER_PATH . 'taxonomies/class.ay-simple-real-estate-taxonomy.php';
+            $AY_SRER_Taxonomies = new AY_SRER_Taxonomies();
+
             require_once AY_SRER_PATH . 'class.ay-simple-real-estate-settings.php';
             $AY_SRER_Settings = new AY_SRER_Settings();
 
@@ -61,6 +64,7 @@ if ( ! class_exists('AY_SRER')) {
 
         // Adds menu item to the admin dashboard
         public function add_admnin_menu() {
+            //adds main menu item
             add_menu_page(
                 'Simple Real Estate',
                 'Simple Real Estate',
@@ -69,7 +73,7 @@ if ( ! class_exists('AY_SRER')) {
                 array($this, 'ay_srer_admin_page'),
                 'dashicons-admin-home',
             );
-
+            // Add sub menu item for rent
             add_submenu_page(
                 'ay_srer_admimn',
                 'Rent',
@@ -79,13 +83,33 @@ if ( ! class_exists('AY_SRER')) {
                 null,
                 null
             );
-
+            // Add sub menu item for buy
             add_submenu_page(
                 'ay_srer_admimn',
                 'Buy',
                 'Buy',
                 'manage_options',
                 'edit.php?post_type=buy',
+                null,
+                null
+            );
+            // Add sub menu item for taxonomy Cities
+            add_submenu_page(
+                'ay_srer_admimn',
+                'Cities',
+                'Cities',
+                'manage_options',
+                'edit-tags.php?taxonomy=city&post_type=rent',
+                null,
+                null
+            );
+            // Add sub menu item for taxonomy Features
+            add_submenu_page(
+                'ay_srer_admimn',
+                'Features',
+                'Features',
+                'manage_options',
+                'edit-tags.php?taxonomy=feature&post_type=rent',
                 null,
                 null
             );

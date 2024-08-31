@@ -11,7 +11,7 @@ $floor = get_post_meta($post->ID, '_ay_srer_floor', true);
 $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
 $property_type = get_post_meta($post->ID, '_ay_srer_property_type', true);
 
-$property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalow', 'Detached House');
+$property_types = array(__('Apartment', 'ay-simple-real-estate'), __('Villa', 'ay-simple-real-estate'), __('Penthouse', 'ay-simple-real-estate'), __('Residence', 'ay-simple-real-estate'), __('Bungalow', 'ay-simple-real-estate'), __('Detached House', 'ay-simple-real-estate'));
 ?>
 
 <!-- Styling should not be here -->
@@ -36,15 +36,12 @@ $property_types = array('Villa', 'Apartment', 'Penthouse', 'Residence', 'Bungalo
         border: 1px solid #ccc; 
         border-radius: 4px; 
     }
-    .ay-srer-meta-box .multiple-select {
-        height: 100px; 
-    }
 </style>
 
 <!-- The new meta boxes as shown in the editor page of property posts -->
 <div class="ay-srer-meta-box">
     <label for="ay_srer_property_type"><?php echo esc_html__('Property Type:', 'ay-simple-real-estate'); ?></label>
-    <select multiple id="ay_srer_property_type" name="ay_srer_property_type[]" class="multiple-select">
+    <select id="ay_srer_property_type" name="ay_srer_property_type[]" class="multiple-select">
         <?php foreach ($property_types as $type) : ?>
             <option value="<?php echo esc_attr($type); ?>" <?php echo in_array($type, (array) $property_type) ? 'selected' : ''; ?>>
                 <?php echo esc_html($type); ?>

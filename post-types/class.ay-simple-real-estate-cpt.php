@@ -3,19 +3,19 @@
 if(!class_exists('AY_SRER_Post_Types')) {
 class AY_SRER_Post_Types{
     function __construct() {
-    add_action( 'init', array($this, 'create_post_types' ) );
-    add_action( 'add_meta_boxes', array($this, 'ay_srer_add_meta_boxes'));
-    add_action( 'save_post', array($this, 'ay_srer_save_meta_box_data'), 10);
+        add_action( 'init', array($this, 'create_post_types' ) );
+        add_action( 'add_meta_boxes', array($this, 'ay_srer_add_meta_boxes'));
+        add_action( 'save_post', array($this, 'ay_srer_save_meta_box_data'), 10);
 
-    // Custom columns for rent post type
-    add_filter( 'manage_rent_posts_columns', array($this, 'ay_srer_cpt_columns'));
-    add_action( 'manage_rent_posts_custom_column', array($this, 'ay_srer_custom_columns'), 10, 2 );
-    add_filter( 'manage_edit-rent_sortable_columns', array($this, 'ay_srer_sortable_columns'));
+        // Custom columns for rent post type
+        add_filter( 'manage_rent_posts_columns', array($this, 'ay_srer_cpt_columns'));
+        add_action( 'manage_rent_posts_custom_column', array($this, 'ay_srer_custom_columns'), 10, 2 );
+        add_filter( 'manage_edit-rent_sortable_columns', array($this, 'ay_srer_sortable_columns'));
 
-    // Custom columns for buy post type
-    add_filter( 'manage_buy_posts_columns', array($this, 'ay_srer_cpt_columns'));
-    add_action( 'manage_buy_posts_custom_column', array($this, 'ay_srer_custom_columns'), 10, 2 );
-    add_filter( 'manage_edit-buy_sortable_columns', array($this, 'ay_srer_sortable_columns'));
+        // Custom columns for buy post type
+        add_filter( 'manage_buy_posts_columns', array($this, 'ay_srer_cpt_columns'));
+        add_action( 'manage_buy_posts_custom_column', array($this, 'ay_srer_custom_columns'), 10, 2 );
+        add_filter( 'manage_edit-buy_sortable_columns', array($this, 'ay_srer_sortable_columns'));
     }
 
     // Create the post types
@@ -95,9 +95,7 @@ class AY_SRER_Post_Types{
 
     // Showing the meta box and populate it with the current values
     function ay_srer_meta_box_callback($post) {
-    require_once(AY_SRER_PATH . 'views/ay-simple-real-estate_metabox.php');
-
-    
+        require_once(AY_SRER_PATH . 'views/ay-simple-real-estate_metabox.php');
     }
 
     // Save meta box data
@@ -145,26 +143,26 @@ class AY_SRER_Post_Types{
     
     // Add custom columns to the custom post types
     public function ay_srer_cpt_columns( $columns ) {
-    $columns['ay_srer_property_type'] = esc_html__('Property Type', 'ay-simple-real-estate');
-    return $columns;
+        $columns['ay_srer_property_type'] = esc_html__('Property Type', 'ay-simple-real-estate');
+        return $columns;
     }
     
     // Populate custom columns of the custom post type relevant values
     public function ay_srer_custom_columns( $column, $post_id ) {
-    switch ( $column ) {
-        case 'ay_srer_property_type':
-        $property_types = get_post_meta($post_id, '_ay_srer_property_type', true);
-        if ( !empty($property_types) ) {
-            echo esc_html(implode(', ', $property_types));
+        switch ( $column ) {
+            case 'ay_srer_property_type':
+            $property_types = get_post_meta($post_id, '_ay_srer_property_type', true);
+            if ( !empty($property_types) ) {
+                echo esc_html(implode(', ', $property_types));
+            }
+            break;
         }
-        break;
-    }
     }
 
     // Make the custom columns sortable
     public function ay_srer_sortable_columns( $columns ) {
-    $columns['ay_srer_property_type'] = 'ay_srer_property_type';
-    return $columns;
+        $columns['ay_srer_property_type'] = 'ay_srer_property_type';
+        return $columns;
     }
 }
 }
