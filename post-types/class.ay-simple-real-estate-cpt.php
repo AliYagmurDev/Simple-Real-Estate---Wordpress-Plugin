@@ -134,6 +134,10 @@ class AY_SRER_Post_Types{
         update_post_meta($post_id, '_ay_srer_price', sanitize_text_field($_POST['ay_srer_price']));
     }
 
+    if (isset($_POST['ay_srer_currency'])) {
+        update_post_meta($post_id, '_ay_srer_currency', sanitize_text_field($_POST['ay_srer_currency']));
+    }
+
     if (isset($_POST['ay_srer_rooms'])) {
         update_post_meta($post_id, '_ay_srer_rooms', sanitize_text_field($_POST['ay_srer_rooms']));
     }

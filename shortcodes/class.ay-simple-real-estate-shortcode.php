@@ -34,6 +34,13 @@ if (! class_exists('AY_SRER_Shortcode')) {
             return $price ? esc_html($price) : '';
         }
 
+        // Currency shortcode
+        public function ay_srer_shortcode_currency() {
+            global $post;
+            $currency = get_post_meta($post->ID, '_ay_srer_currency', true);
+            return $currency ? esc_html($currency) : '';
+        }
+
         // Rooms shortcode
         public function ay_srer_shortcode_rooms() {
             global $post;

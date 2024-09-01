@@ -10,6 +10,7 @@ $area = get_post_meta($post->ID, '_ay_srer_area', true);
 $floor = get_post_meta($post->ID, '_ay_srer_floor', true);
 $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
 $property_type = get_post_meta($post->ID, '_ay_srer_property_type', true);
+$currency = get_post_meta($post->ID, '_ay_srer_currency', true);
 
 $property_types = array(__('Apartment', 'ay-simple-real-estate'), __('Villa', 'ay-simple-real-estate'), __('Penthouse', 'ay-simple-real-estate'), __('Residence', 'ay-simple-real-estate'), __('Bungalow', 'ay-simple-real-estate'), __('Detached House', 'ay-simple-real-estate'));
 
@@ -158,11 +159,20 @@ if ($selected_cities && !is_wp_error($selected_cities)) {
     <label for="ay_srer_address"><?php echo esc_html__('Address:', 'ay-simple-real-estate'); ?></label>
     <input type="text" id="ay_srer_address" name="ay_srer_address" value="<?php echo esc_attr($address); ?>" />
 
+    <label for="ay_srer_currency"><?php echo esc_html__('Currency:', 'ay-simple-real-estate'); ?></label>
+    <select id="ay_srer_currency" name="ay_srer_currency">
+        <option value=""><?php echo esc_html__('Select a currency', 'ay-simple-real-estate'); ?></option>
+        <option value="GBP" <?php echo selected('TL', $currency); ?>><?php echo esc_html__('TL', 'ay-simple-real-estate'); ?></option>
+        <option value="USD" <?php echo selected('USD', $currency); ?>><?php echo esc_html__('USD', 'ay-simple-real-estate'); ?></option>
+        <option value="EUR" <?php echo selected('EUR', $currency); ?>><?php echo esc_html__('EUR', 'ay-simple-real-estate'); ?></option>
+        <option value="GBP" <?php echo selected('GBP', $currency); ?>><?php echo esc_html__('GBP', 'ay-simple-real-estate'); ?></option> 
+    </select>
+
     <label for="ay_srer_price"><?php echo esc_html__('Price:', 'ay-simple-real-estate'); ?></label>
     <input type="number" id="ay_srer_price" name="ay_srer_price" value="<?php echo esc_attr($price); ?>" />
 
     <label for="ay_srer_rooms"><?php echo esc_html__('Rooms:', 'ay-simple-real-estate'); ?></label>
-    <input type="number" id="ay_srer_rooms" name="ay_srer_rooms" value="<?php echo esc_attr($rooms); ?>" />
+    <input type="text" id="ay_srer_rooms" name="ay_srer_rooms" value="<?php echo esc_attr($rooms); ?>" />
 
     <label for="ay_srer_area"><?php echo esc_html__('Area (sq ft):', 'ay-simple-real-estate'); ?></label>
     <input type="number" id="ay_srer_area" name="ay_srer_area" value="<?php echo esc_attr($area); ?>" />
