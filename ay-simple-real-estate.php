@@ -72,46 +72,7 @@ if ( ! class_exists('AY_SRER')) {
                 'ay_srer_admimn',
                 array($this, 'ay_srer_admin_page'),
                 'dashicons-admin-home',
-            );
-            // Add sub menu item for rent
-            add_submenu_page(
-                'ay_srer_admimn',
-                'Rent',
-                'Rent',
-                'manage_options',
-                'edit.php?post_type=rent',
-                null,
-                null
-            );
-            // Add sub menu item for buy
-            add_submenu_page(
-                'ay_srer_admimn',
-                'Buy',
-                'Buy',
-                'manage_options',
-                'edit.php?post_type=buy',
-                null,
-                null
-            );
-            // Add sub menu item for taxonomy Cities
-            add_submenu_page(
-                'ay_srer_admimn',
-                'Cities',
-                'Cities',
-                'manage_options',
-                'edit-tags.php?taxonomy=city&post_type=rent',
-                null,
-                null
-            );
-            // Add sub menu item for taxonomy Features
-            add_submenu_page(
-                'ay_srer_admimn',
-                'Features',
-                'Features',
-                'manage_options',
-                'edit-tags.php?taxonomy=feature&post_type=rent',
-                null,
-                null
+                25,
             );
         }
 
