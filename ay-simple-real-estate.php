@@ -72,7 +72,7 @@ if ( ! class_exists('AY_SRER')) {
                 'Simple Real Estate',
                 'Simple Real Estate',
                 'manage_options',
-                'ay_srer_admimn',
+                'ay_srer_admin',
                 array($this, 'ay_srer_admin_page'),
                 'dashicons-admin-home',
                 25,
