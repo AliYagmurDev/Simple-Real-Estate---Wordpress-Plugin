@@ -37,6 +37,9 @@ if ( ! class_exists('AY_SRER')) {
 
             require_once AY_SRER_PATH . 'functions/class.ay-simple-real-estate-search.php';
             $AY_SRER_Search = new AY_SRER_Search();
+
+            require_once AY_SRER_PATH . 'functions/class.ay-simple-real-estate-load-cities.php';
+
         }
         public function define_constants() {
             define( 'AY_SRER_PATH', plugin_dir_path(__FILE__));

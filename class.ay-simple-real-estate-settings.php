@@ -7,6 +7,7 @@ if ( ! class_exists('AY_SRER_Settings')) {
         public function __construct() {
             self::$options = get_option('ay_srer_settings');
             add_action('admin_init', array($this, 'admin_init'));
+            add_action('admin_post_populate_cities_action', array($this, 'PopulateCities'));
         }
 
         public function admin_init() {
@@ -53,7 +54,10 @@ if ( ! class_exists('AY_SRER_Settings')) {
         // Callback for second section
         public function ay_srer_options_callback() {
             echo '<span> Options for the plugin are as follows:  (under construction)</span>';
+            // create a button
+            $action_url = admin_url('admin-post.php?action=populate_cities_action');
             ?>
+                <button id="populate_cities" class="button" onclick="window.location.href='<?php echo esc_url($action_url); ?>'">Populate Cities</button>
                 <input 
                 type="text" 
                 name="ay_srer_settings[ay_srer_settings_options]" 
@@ -62,5 +66,12 @@ if ( ! class_exists('AY_SRER_Settings')) {
                 >
             <?php
         }
+
+        public function PopulateCities() {
+            // Populate the city taxonomy with Cyprus cities and districts
+            $AY_SRER_LoadCities = new AY_SRER_LoadCities();
+            $AY_SRER_LoadCities->load_cyprus_cities_tr();
+        }
+        
     }
 }
