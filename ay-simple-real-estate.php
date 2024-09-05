@@ -31,6 +31,7 @@ if ( ! class_exists('AY_SRER')) {
 
             require_once AY_SRER_PATH . 'class.ay-simple-real-estate-settings.php';
             $AY_SRER_Settings = new AY_SRER_Settings();
+            // calls the PopulateCities method
 
             require_once AY_SRER_PATH . 'shortcodes/class.ay-simple-real-estate-shortcode.php';
             $AY_SRER_Shortcode = new AY_SRER_Shortcode();
@@ -39,7 +40,7 @@ if ( ! class_exists('AY_SRER')) {
             $AY_SRER_Search = new AY_SRER_Search();
 
             require_once AY_SRER_PATH . 'functions/class.ay-simple-real-estate-load-cities.php';
-
+            // called in settings page
         }
         public function define_constants() {
             define( 'AY_SRER_PATH', plugin_dir_path(__FILE__));
