@@ -1,0 +1,383 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-09-09 11:29+0300\n"
+"PO-Revision-Date: 2024-09-09 11:32+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ../../../../xampp/htdocs/wordpress/wp-content/plugins/ay-"
+"simple-real-estate\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:25
+#: post-types/class.ay-simple-real-estate-cpt.php:26
+#: post-types/class.ay-simple-real-estate-cpt.php:28
+msgid "Rent Listings"
+msgstr "Kiralık İlanlar"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:29
+msgid "Rent Listing"
+msgstr "Kiralık İlan"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:30
+#: post-types/class.ay-simple-real-estate-cpt.php:31
+msgid "Add New Rent Listing"
+msgstr "Yeni Kiralık İlan Ekle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:32
+msgid "Edit Rent Listing"
+msgstr "Kiralık İlanı Düzenle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:33
+msgid "New Rent Listing"
+msgstr "Yeni Kiralık İlanı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:34
+msgid "View Rent Listing"
+msgstr "Kiralık İlanını Görüntüle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:35
+msgid "Search Rent Listings"
+msgstr "Kiralık İlan Ara"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:36
+msgid "No Rent Listings found"
+msgstr "Kiralık İlan Bulunamadı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:37
+msgid "No Rent Listings found in Trash"
+msgstr "Çöp Kutusunda Kiralık İlan Bulunamadı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:55
+#: post-types/class.ay-simple-real-estate-cpt.php:56
+#: post-types/class.ay-simple-real-estate-cpt.php:58
+msgid "Buy Listings"
+msgstr "Satılık İlanları"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:59
+msgid "Buy Listing"
+msgstr "Satılık İlanı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:60
+#: post-types/class.ay-simple-real-estate-cpt.php:61
+msgid "Add New Buy Listing"
+msgstr "Yeni Satılık İlanı Ekle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:62
+msgid "Edit Buy Listing"
+msgstr "Satılık İlanını Düzenle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:63
+msgid "New Buy Listing"
+msgstr "Yeni Satılık İlanı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:64
+msgid "View Buy Listing"
+msgstr "Satılık İlanını Görüntüle"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:65
+msgid "Search Buy Listings"
+msgstr "Satılık İlan Ara"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:66
+msgid "No Buy Listings found"
+msgstr "Satılık İlan Bulunamadı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:67
+msgid "No Buy Listings found in Trash"
+msgstr "Çöp Kutusunda Satılık İlan Bulunamadı"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:88
+msgid "Property Details"
+msgstr "İlan Detayları"
+
+#: post-types/class.ay-simple-real-estate-cpt.php:168
+msgid "Property Type"
+msgstr "İlan Tipi:"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:121
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:39
+msgid "City"
+msgstr "Şehir"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:129
+msgid "Rooms"
+msgstr "Odalar"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:133
+msgid "Min Price"
+msgstr "Minimum Fiyat"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:137
+msgid "Max Price"
+msgstr "Maksimum Fiyat"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:141
+msgid "Keywords"
+msgstr "Anahtar kelime"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:146
+msgid "Rent or Buy"
+msgstr "Kiralık veya Satılık"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:148
+msgid "Both"
+msgstr "Her İkisi"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:149
+msgid "Rent"
+msgstr "Kirala"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:150
+msgid "Buy"
+msgstr "Satın Al"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:155
+msgid "Search"
+msgstr "Ara"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:11
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:21
+msgid "Features"
+msgstr "Özellikler"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:12
+msgid "Feature"
+msgstr "Özellik"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:13
+msgid "Search Features"
+msgstr "Özelliklerde Ara"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:14
+msgid "All Features"
+msgstr "Tüm Özellikler"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:15
+msgid "Parent Feature"
+msgstr "Ana Özellik"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:16
+msgid "Parent Feature:"
+msgstr "Ana Özellik:"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:17
+msgid "Edit Feature"
+msgstr "Özelliği Düzenle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:18
+msgid "Update Feature"
+msgstr "Özelliği Güncelle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:19
+msgid "Add New Feature"
+msgstr "Yeni Özellik Ekle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:20
+msgid "New Feature Name"
+msgstr "Yeni Özellik Adı"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:38
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:48
+msgid "Cities"
+msgstr "Şehirler"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:40
+msgid "Search Cities"
+msgstr "Şehirlerde Ara"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:41
+msgid "All Cities"
+msgstr "Tüm Şehirler"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:42
+msgid "Parent City"
+msgstr "Ana Şehir"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:43
+msgid "Parent City:"
+msgstr "Ana Şehir:"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:44
+msgid "Edit City"
+msgstr "Şehri Düzenle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:45
+msgid "Update City"
+msgstr "Şehri Güncelle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:46
+msgid "Add New City"
+msgstr "Yeni Şehir Ekle"
+
+#: taxonomies/class.ay-simple-real-estate-taxonomy.php:47
+msgid "New City Name"
+msgstr "Yeni Şehir Adı"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Apartment"
+msgstr "Daire"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Villa"
+msgstr "Villa"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Penthouse"
+msgstr "Penthouse"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Residence"
+msgstr "Rezidans"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Bungalow"
+msgstr "Bungalow"
+
+#: views/ay-simple-real-estate_metabox.php:15
+msgid "Detached House"
+msgstr "Müstakil Ev"
+
+#: views/ay-simple-real-estate_metabox.php:87
+msgid "Property Type:"
+msgstr "İlan Tipi:"
+
+#: views/ay-simple-real-estate_metabox.php:99
+msgid "City:"
+msgstr "Şehir:"
+
+#: views/ay-simple-real-estate_metabox.php:101
+msgid "Select a city"
+msgstr "Bir şehir seç"
+
+#: views/ay-simple-real-estate_metabox.php:109
+msgid "District:"
+msgstr "Bölge:"
+
+#: views/ay-simple-real-estate_metabox.php:111
+#: views/ay-simple-real-estate_metabox.php:127
+msgid "Select a district"
+msgstr "Bir bölge seç"
+
+#: views/ay-simple-real-estate_metabox.php:159
+msgid "Address:"
+msgstr "Adres:"
+
+#: views/ay-simple-real-estate_metabox.php:162
+msgid "Currency:"
+msgstr "Para Birimi"
+
+#: views/ay-simple-real-estate_metabox.php:164
+msgid "Select a currency"
+msgstr "Bir para birimi seç"
+
+#: views/ay-simple-real-estate_metabox.php:165
+msgid "TL"
+msgstr "TL"
+
+#: views/ay-simple-real-estate_metabox.php:166
+msgid "USD"
+msgstr "Dolar"
+
+#: views/ay-simple-real-estate_metabox.php:167
+msgid "EUR"
+msgstr "Euro"
+
+#: views/ay-simple-real-estate_metabox.php:168
+msgid "GBP"
+msgstr "GBP"
+
+#: views/ay-simple-real-estate_metabox.php:171
+msgid "Price:"
+msgstr "Fiyat:"
+
+#: views/ay-simple-real-estate_metabox.php:174
+msgid "Rooms:"
+msgstr "Oda Sayısı:"
+
+#: views/ay-simple-real-estate_metabox.php:177
+msgid "Area (sq ft):"
+msgstr "Alan (m2):"
+
+#: views/ay-simple-real-estate_metabox.php:180
+msgid "Floor:"
+msgstr "Kat:"
+
+#: views/ay-simple-real-estate_metabox.php:183
+msgid "Building Age (years):"
+msgstr "Bina Yaşı (Yıl):"
+
+#: views/settings-page.php:6
+msgid "Documentation"
+msgstr "Dökümantasyon"
+
+#: views/settings-page.php:8
+msgid ""
+"This plugin is a simple real estate plugin that allows you to add properties "
+"to your website."
+msgstr ""
+"Bu eklenti, web sitenize mülk eklemenize olanak tanıyan kolay bir emlak "
+"eklentisidir."
+
+#: views/settings-page.php:10
+msgid "The shortcodes you can use are as follows:"
+msgstr "Kullanabileceğiniz kısa kodlar şu şekildedir:"
+
+#: views/settings-page.php:13
+msgid "Displays the price of the property"
+msgstr "Mülkün fiyatını görüntüler"
+
+#: views/settings-page.php:14
+msgid "Displays the number of rooms in the property"
+msgstr "Mülkteki oda sayısını görüntüler"
+
+#: views/settings-page.php:15
+msgid "Displays the address of the property"
+msgstr "Mülkün adresini görüntüler"
+
+#: views/settings-page.php:16
+msgid "Displays the area of the property"
+msgstr "Mülkün alanını görüntüler"
+
+#: views/settings-page.php:17
+msgid "Displays the floor of the property"
+msgstr "Mülkün kaçıncı katta olduğunu gösterir"
+
+#: views/settings-page.php:18
+msgid "Displays the building age of the property"
+msgstr "Mülkün bina yaşını gösterir"
+
+#: views/settings-page.php:19
+msgid "Displays the type of the property"
+msgstr "Mülkün türünü görüntüler"
+
+#: views/settings-page.php:20
+msgid "Displays the city of the property"
+msgstr "Mülkün bulunduğu şehri görüntüler"
+
+#: views/settings-page.php:21
+msgid "Displays the features of the property"
+msgstr "Mülkün özelliklerini görüntüler"
+
+#: views/settings-page.php:22
+msgid "Displays a search form for the properties"
+msgstr "Mülkler için bir arama formu görüntüler"
+
+#: views/settings-page.php:25
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: views/settings-page.php:27
+msgid "Create cities for the plugin:"
+msgstr "Eklenti için şehirler oluşturun:"
+
+#: views/settings-page.php:32
+msgid "Populate Cities"
+msgstr "Şehirleri Oluştur"

@@ -118,7 +118,7 @@ if (! class_exists('AY_SRER_Shortcode')) {
             <form id="ay-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="city"><?php _e('City', 'ay-simple-real-estate'); ?></label>
+                        <label for="city"><?php __('City', 'ay-simple-real-estate'); ?></label>
                         <select name="city[]" multiple>
                             <?php foreach ($cities as $city): ?>
                                 <option value="<?php echo esc_attr($city->slug); ?>"><?php echo esc_html($city->name); ?></option>
@@ -126,33 +126,33 @@ if (! class_exists('AY_SRER_Shortcode')) {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="rooms"><?php _e('Rooms', 'ay-simple-real-estate'); ?></label>
+                        <label for="rooms"><?php __('Rooms', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="rooms" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="price-min"><?php _e('Min Price', 'ay-simple-real-estate'); ?></label>
+                        <label for="price-min"><?php __('Min Price', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="price-min" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="price-max"><?php _e('Max Price', 'ay-simple-real-estate'); ?></label>
+                        <label for="price-max"><?php __('Max Price', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="price-max" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="s"><?php _e('Keywords', 'ay-simple-real-estate'); ?></label>
+                        <label for="s"><?php __('Keywords', 'ay-simple-real-estate'); ?></label>
                         <input type="text" name="s">
                     </div>
 
                     <div class="form-group">
-                        <label for="property-type"><?php _e('Rent or Buy', 'ay-simple-real-estate'); ?></label>
+                        <label for="property-type"><?php __('Rent or Buy', 'ay-simple-real-estate'); ?></label>
                         <select name="property-type">
-                            <option value=""><?php _e('Both', 'ay-simple-real-estate'); ?></option>
-                            <option value="rent"><?php _e('Rent', 'ay-simple-real-estate'); ?></option>
-                            <option value="buy"><?php _e('Buy', 'ay-simple-real-estate'); ?></option>
+                            <option value=""><?php __('Both', 'ay-simple-real-estate'); ?></option>
+                            <option value="rent"><?php __('Rent', 'ay-simple-real-estate'); ?></option>
+                            <option value="buy"><?php __('Buy', 'ay-simple-real-estate'); ?></option>
                         </select>
                     </div>
                     <br>
                     <div class="form-group">
-                        <button type="submit"><?php _e('Search', 'ay-simple-real-estate'); ?></button>
+                        <button type="submit"><?php __('Search', 'ay-simple-real-estate'); ?></button>
                     </div>
                 </div>
             </form>
