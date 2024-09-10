@@ -113,50 +113,126 @@ if (! class_exists('AY_SRER_Shortcode')) {
 
         // Search form shortcode
         public function ay_srer_search_form() {
-            $cities = get_terms(['taxonomy' => 'city', 'hide_empty' => false]);
+            //$cities = get_terms(['taxonomy' => 'city', 'hide_empty' => false]);
+
+            $cities = get_terms(array(
+                'taxonomy' => 'city',
+                'hide_empty' => false,
+                'parent' => 0
+            ));
+
+            // Get all cities, including both parent and sub-cities
+            $all_cities = get_terms(array(
+                'taxonomy'   => 'city',
+                'hide_empty' => false,
+            ));
+
+            // Prepare the sub-cities in an associative array for easier access in JavaScript
+            $sub_cities_by_parent = array();
+            foreach ($all_cities as $city) {
+                if ($city->parent != 0) {
+                    $sub_cities_by_parent[$city->parent][] = $city;
+                }
+            }
             ?>
             <form id="ay-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="city"><?php __('City', 'ay-simple-real-estate'); ?></label>
-                        <select name="city[]" multiple>
-                            <?php foreach ($cities as $city): ?>
-                                <option value="<?php echo esc_attr($city->slug); ?>"><?php echo esc_html($city->name); ?></option>
+                        <label for="property-type"><?php __('Property Type', 'ay-simple-real-estate'); ?></label>
+                        <select name="property-type">
+                            <option value=""><?php echo esc_html__('All', 'ay-simple-real-estate'); ?></option>
+                            <option value="Apartment"><?php echo esc_html__('Apartment', 'ay-simple-real-estate'); ?></option>
+                            <option value="Villa"><?php echo esc_html__('Villa', 'ay-simple-real-estate'); ?></option>
+                            <option value="Penthouse"><?php echo esc_html__('Penthouse', 'ay-simple-real-estate'); ?></option>
+                            <option value="Residence"><?php echo esc_html__('Residence', 'ay-simple-real-estate'); ?></option>
+                            <option value="Bungalow"><?php echo esc_html__('Bungalow', 'ay-simple-real-estate'); ?></option>
+                            <option value="Detached House"><?php echo esc_html__('Detached House', 'ay-simple-real-estate'); ?></option>
+                        </select>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <label for="city"><?php echo esc_html__('City', 'ay-simple-real-estate'); ?></label>
+                        <select id="search_city" name="city">
+                            <option value=""><?php echo esc_html__('Select a city', 'ay-simple-real-estate'); ?></option>
+                            <?php foreach ($cities as $city) : ?>
+                                <option value="<?php echo esc_attr($city->term_id); ?>">
+                                    <?php echo esc_html($city->name); ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="rooms"><?php __('Rooms', 'ay-simple-real-estate'); ?></label>
+                        <label for="district"><?php echo esc_html__('District', 'ay-simple-real-estate'); ?></label>
+                        <select id="search_district" name="district">
+                            <option value=""><?php echo esc_html__('Select a district', 'ay-simple-real-estate'); ?></option>
+                            <!-- Districts will be dynamically populated based on the selected city -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rooms"><?php echo esc_html__('Rooms', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="rooms" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="price-min"><?php __('Min Price', 'ay-simple-real-estate'); ?></label>
+                        <label for="price-min"><?php echo esc_html__('Min Price', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="price-min" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="price-max"><?php __('Max Price', 'ay-simple-real-estate'); ?></label>
+                        <label for="price-max"><?php echo esc_html__('Max Price', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="price-max" min="0">
                     </div>
                     <div class="form-group">
-                        <label for="s"><?php __('Keywords', 'ay-simple-real-estate'); ?></label>
+                        <label for="s"><?php echo esc_html__('Keywords', 'ay-simple-real-estate'); ?></label>
                         <input type="text" name="s">
                     </div>
 
                     <div class="form-group">
                         <label for="property-type"><?php __('Rent or Buy', 'ay-simple-real-estate'); ?></label>
                         <select name="property-type">
-                            <option value=""><?php __('Both', 'ay-simple-real-estate'); ?></option>
-                            <option value="rent"><?php __('Rent', 'ay-simple-real-estate'); ?></option>
-                            <option value="buy"><?php __('Buy', 'ay-simple-real-estate'); ?></option>
+                            <option value=""><?php echo esc_html__('Both', 'ay-simple-real-estate'); ?></option>
+                            <option value="rent"><?php echo esc_html__('Rent', 'ay-simple-real-estate'); ?></option>
+                            <option value="buy"><?php echo esc_html__('Buy', 'ay-simple-real-estate'); ?></option>
                         </select>
                     </div>
                     <br>
                     <div class="form-group">
-                        <button type="submit"><?php __('Search', 'ay-simple-real-estate'); ?></button>
+                        <button type="submit"><?php echo esc_html__('Search', 'ay-simple-real-estate'); ?></button>
                     </div>
                 </div>
             </form>
 
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Sub-cities data from PHP
+                    var subCitiesByParent = <?php echo json_encode($sub_cities_by_parent); ?>;
+
+                    // Get the dropdown elements
+                    var citySelect = document.getElementById('search_city');
+                    var districtSelect = document.getElementById('search_district');
+
+                    // Function to update district dropdown
+                    function updateDistricts(parentCityId) {
+                        // Clear previous options
+                        districtSelect.innerHTML = '<option value=""><?php echo esc_html__('Select a district', 'ay-simple-real-estate'); ?></option>';
+
+                        // Check if sub-cities exist for the selected parent city
+                        if (subCitiesByParent[parentCityId]) {
+                            subCitiesByParent[parentCityId].forEach(function(subCity) {
+                                var option = document.createElement('option');
+                                option.value = subCity.term_id;
+                                option.textContent = subCity.name;
+                                districtSelect.appendChild(option);
+                            });
+                        }
+                    }
+
+                    // Listen for changes in the city dropdown
+                    citySelect.addEventListener('change', function() {
+                        var selectedCityId = citySelect.value;
+                        updateDistricts(selectedCityId);
+                    });
+                });
+            </script>
             <?php
         }
     }

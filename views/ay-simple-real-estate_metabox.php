@@ -12,6 +12,7 @@ $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
 $property_type = get_post_meta($post->ID, '_ay_srer_property_type', true);
 $currency = get_post_meta($post->ID, '_ay_srer_currency', true);
 
+$property_types_values = array('Apartment', 'Villa','Penthouse', 'Residence', 'Bungalow', 'Detached House');
 $property_types = array(__('Apartment', 'ay-simple-real-estate'), __('Villa', 'ay-simple-real-estate'), __('Penthouse', 'ay-simple-real-estate'), __('Residence', 'ay-simple-real-estate'), __('Bungalow', 'ay-simple-real-estate'), __('Detached House', 'ay-simple-real-estate'));
 
 // create a variable that retrieves all taxonomy values from city taxonomy that doesnt have any parent
@@ -86,8 +87,8 @@ if ($selected_cities && !is_wp_error($selected_cities)) {
 <div class="ay-srer-meta-box">
     <label for="ay_srer_property_type"><?php echo esc_html__('Property Type:', 'ay-simple-real-estate'); ?></label>
     <select id="ay_srer_property_type" name="ay_srer_property_type[]" class="multiple-select">
-        <?php foreach ($property_types as $type) : ?>
-            <option value="<?php echo esc_attr($type); ?>" <?php echo in_array($type, (array) $property_type) ? 'selected' : ''; ?>>
+        <?php foreach ($property_types as $key=>$type) : ?>
+            <option value="<?php echo esc_attr($property_types_values[$key]); ?>" <?php echo in_array($type, (array) $property_type) ? 'selected' : ''; ?>>
                 <?php echo esc_html($type); ?>
             </option>
         <?php endforeach; ?>

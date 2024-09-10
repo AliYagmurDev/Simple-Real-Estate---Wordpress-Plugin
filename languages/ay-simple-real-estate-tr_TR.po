@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-09-09 11:29+0300\n"
-"PO-Revision-Date: 2024-09-09 11:32+0300\n"
+"POT-Creation-Date: 2024-09-10 10:45+0300\n"
+"PO-Revision-Date: 2024-09-10 10:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -99,47 +99,98 @@ msgid "Property Details"
 msgstr "İlan Detayları"
 
 #: post-types/class.ay-simple-real-estate-cpt.php:168
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:141
 msgid "Property Type"
-msgstr "İlan Tipi:"
+msgstr "İlan Tipi"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:121
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:143
+msgid "All"
+msgstr "Hepsi"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:144
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Apartment"
+msgstr "Daire"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:145
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Villa"
+msgstr "Villa"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:146
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Penthouse"
+msgstr "Penthouse"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:147
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Residence"
+msgstr "Rezidans"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:148
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Bungalow"
+msgstr "Bungalow"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:149
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Detached House"
+msgstr "Müstakil Ev"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:154
 #: taxonomies/class.ay-simple-real-estate-taxonomy.php:39
 msgid "City"
 msgstr "Şehir"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:129
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:156
+#: views/ay-simple-real-estate_metabox.php:102
+msgid "Select a city"
+msgstr "Bir şehir seç"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:166
+msgid "District"
+msgstr "Bölge"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:168
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:216
+#: views/ay-simple-real-estate_metabox.php:112
+#: views/ay-simple-real-estate_metabox.php:128
+msgid "Select a district"
+msgstr "Bir bölge seç"
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:173
 msgid "Rooms"
 msgstr "Odalar"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:133
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:177
 msgid "Min Price"
 msgstr "Minimum Fiyat"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:137
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:181
 msgid "Max Price"
 msgstr "Maksimum Fiyat"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:141
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:185
 msgid "Keywords"
 msgstr "Anahtar kelime"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:146
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:190
 msgid "Rent or Buy"
 msgstr "Kiralık veya Satılık"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:148
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:192
 msgid "Both"
 msgstr "Her İkisi"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:149
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:193
 msgid "Rent"
 msgstr "Kirala"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:150
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:194
 msgid "Buy"
 msgstr "Satın Al"
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:155
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:199
 msgid "Search"
 msgstr "Ara"
 
@@ -221,96 +272,63 @@ msgstr "Yeni Şehir Ekle"
 msgid "New City Name"
 msgstr "Yeni Şehir Adı"
 
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Apartment"
-msgstr "Daire"
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Villa"
-msgstr "Villa"
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Penthouse"
-msgstr "Penthouse"
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Residence"
-msgstr "Rezidans"
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Bungalow"
-msgstr "Bungalow"
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Detached House"
-msgstr "Müstakil Ev"
-
-#: views/ay-simple-real-estate_metabox.php:87
+#: views/ay-simple-real-estate_metabox.php:88
 msgid "Property Type:"
 msgstr "İlan Tipi:"
 
-#: views/ay-simple-real-estate_metabox.php:99
+#: views/ay-simple-real-estate_metabox.php:100
 msgid "City:"
 msgstr "Şehir:"
 
-#: views/ay-simple-real-estate_metabox.php:101
-msgid "Select a city"
-msgstr "Bir şehir seç"
-
-#: views/ay-simple-real-estate_metabox.php:109
+#: views/ay-simple-real-estate_metabox.php:110
 msgid "District:"
 msgstr "Bölge:"
 
-#: views/ay-simple-real-estate_metabox.php:111
-#: views/ay-simple-real-estate_metabox.php:127
-msgid "Select a district"
-msgstr "Bir bölge seç"
-
-#: views/ay-simple-real-estate_metabox.php:159
+#: views/ay-simple-real-estate_metabox.php:160
 msgid "Address:"
 msgstr "Adres:"
 
-#: views/ay-simple-real-estate_metabox.php:162
+#: views/ay-simple-real-estate_metabox.php:163
 msgid "Currency:"
-msgstr "Para Birimi"
+msgstr "Para Birimi:"
 
-#: views/ay-simple-real-estate_metabox.php:164
+#: views/ay-simple-real-estate_metabox.php:165
 msgid "Select a currency"
 msgstr "Bir para birimi seç"
 
-#: views/ay-simple-real-estate_metabox.php:165
+#: views/ay-simple-real-estate_metabox.php:166
 msgid "TL"
 msgstr "TL"
 
-#: views/ay-simple-real-estate_metabox.php:166
+#: views/ay-simple-real-estate_metabox.php:167
 msgid "USD"
 msgstr "Dolar"
 
-#: views/ay-simple-real-estate_metabox.php:167
+#: views/ay-simple-real-estate_metabox.php:168
 msgid "EUR"
 msgstr "Euro"
 
-#: views/ay-simple-real-estate_metabox.php:168
+#: views/ay-simple-real-estate_metabox.php:169
 msgid "GBP"
 msgstr "GBP"
 
-#: views/ay-simple-real-estate_metabox.php:171
+#: views/ay-simple-real-estate_metabox.php:172
 msgid "Price:"
 msgstr "Fiyat:"
 
-#: views/ay-simple-real-estate_metabox.php:174
+#: views/ay-simple-real-estate_metabox.php:175
 msgid "Rooms:"
 msgstr "Oda Sayısı:"
 
-#: views/ay-simple-real-estate_metabox.php:177
+#: views/ay-simple-real-estate_metabox.php:178
 msgid "Area (sq ft):"
 msgstr "Alan (m2):"
 
-#: views/ay-simple-real-estate_metabox.php:180
+#: views/ay-simple-real-estate_metabox.php:181
 msgid "Floor:"
 msgstr "Kat:"
 
-#: views/ay-simple-real-estate_metabox.php:183
+#: views/ay-simple-real-estate_metabox.php:184
 msgid "Building Age (years):"
 msgstr "Bina Yaşı (Yıl):"
 

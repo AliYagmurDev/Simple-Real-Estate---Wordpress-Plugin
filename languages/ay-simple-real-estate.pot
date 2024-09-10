@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-09-09 11:29+0300\n"
+"POT-Creation-Date: 2024-09-10 10:45+0300\n"
 "PO-Revision-Date: 2024-09-09 11:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,8 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
-"X-Poedit-Basepath: ../../../../xampp/htdocs/wordpress/wp-content/plugins/ay-"
-"simple-real-estate\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -99,47 +98,98 @@ msgid "Property Details"
 msgstr ""
 
 #: post-types/class.ay-simple-real-estate-cpt.php:168
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:141
 msgid "Property Type"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:121
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:143
+msgid "All"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:144
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Apartment"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:145
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Villa"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:146
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Penthouse"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:147
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Residence"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:148
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Bungalow"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:149
+#: views/ay-simple-real-estate_metabox.php:16
+msgid "Detached House"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:154
 #: taxonomies/class.ay-simple-real-estate-taxonomy.php:39
 msgid "City"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:129
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:156
+#: views/ay-simple-real-estate_metabox.php:102
+msgid "Select a city"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:166
+msgid "District"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:168
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:216
+#: views/ay-simple-real-estate_metabox.php:112
+#: views/ay-simple-real-estate_metabox.php:128
+msgid "Select a district"
+msgstr ""
+
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:173
 msgid "Rooms"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:133
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:177
 msgid "Min Price"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:137
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:181
 msgid "Max Price"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:141
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:185
 msgid "Keywords"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:146
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:190
 msgid "Rent or Buy"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:148
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:192
 msgid "Both"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:149
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:193
 msgid "Rent"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:150
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:194
 msgid "Buy"
 msgstr ""
 
-#: shortcodes/class.ay-simple-real-estate-shortcode.php:155
+#: shortcodes/class.ay-simple-real-estate-shortcode.php:199
 msgid "Search"
 msgstr ""
 
@@ -221,96 +271,63 @@ msgstr ""
 msgid "New City Name"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Apartment"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Villa"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Penthouse"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Residence"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Bungalow"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:15
-msgid "Detached House"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:87
+#: views/ay-simple-real-estate_metabox.php:88
 msgid "Property Type:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:99
+#: views/ay-simple-real-estate_metabox.php:100
 msgid "City:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:101
-msgid "Select a city"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:109
+#: views/ay-simple-real-estate_metabox.php:110
 msgid "District:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:111
-#: views/ay-simple-real-estate_metabox.php:127
-msgid "Select a district"
-msgstr ""
-
-#: views/ay-simple-real-estate_metabox.php:159
+#: views/ay-simple-real-estate_metabox.php:160
 msgid "Address:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:162
+#: views/ay-simple-real-estate_metabox.php:163
 msgid "Currency:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:164
+#: views/ay-simple-real-estate_metabox.php:165
 msgid "Select a currency"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:165
+#: views/ay-simple-real-estate_metabox.php:166
 msgid "TL"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:166
+#: views/ay-simple-real-estate_metabox.php:167
 msgid "USD"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:167
+#: views/ay-simple-real-estate_metabox.php:168
 msgid "EUR"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:168
+#: views/ay-simple-real-estate_metabox.php:169
 msgid "GBP"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:171
+#: views/ay-simple-real-estate_metabox.php:172
 msgid "Price:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:174
+#: views/ay-simple-real-estate_metabox.php:175
 msgid "Rooms:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:177
+#: views/ay-simple-real-estate_metabox.php:178
 msgid "Area (sq ft):"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:180
+#: views/ay-simple-real-estate_metabox.php:181
 msgid "Floor:"
 msgstr ""
 
-#: views/ay-simple-real-estate_metabox.php:183
+#: views/ay-simple-real-estate_metabox.php:184
 msgid "Building Age (years):"
 msgstr ""
 
