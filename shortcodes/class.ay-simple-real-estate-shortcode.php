@@ -1,90 +1,101 @@
 <?php
 
 if (! class_exists('AY_SRER_Shortcode')) {
-    class AY_SRER_Shortcode {
-        public function __construct() {
+    class AY_SRER_Shortcode
+    {
+        public function __construct()
+        {
 
             // Register Shortcodes
-            
-            add_shortcode('property_price', array( $this, 'ay_srer_shortcode_price'));
 
-            add_shortcode('property_rooms', array( $this, 'ay_srer_shortcode_rooms'));
+            add_shortcode('property_price', array($this, 'ay_srer_shortcode_price'));
 
-            add_shortcode('property_address', array( $this, 'ay_srer_shortcode_address'));
+            add_shortcode('property_rooms', array($this, 'ay_srer_shortcode_rooms'));
 
-            add_shortcode('property_area', array( $this, 'ay_srer_shortcode_area'));
+            add_shortcode('property_address', array($this, 'ay_srer_shortcode_address'));
 
-            add_shortcode('property_floor', array( $this, 'ay_srer_shortcode_floor'));
+            add_shortcode('property_area', array($this, 'ay_srer_shortcode_area'));
 
-            add_shortcode('property_building_age', array( $this, 'ay_srer_shortcode_building_age'));
+            add_shortcode('property_floor', array($this, 'ay_srer_shortcode_floor'));
 
-            add_shortcode('property_type', array( $this, 'ay_srer_shortcode_property_type'));
+            add_shortcode('property_building_age', array($this, 'ay_srer_shortcode_building_age'));
 
-            add_shortcode('property_city', array( $this, 'ay_srer_shortcode_city'));
+            add_shortcode('property_type', array($this, 'ay_srer_shortcode_property_type'));
 
-            add_shortcode('property_features', array( $this, 'ay_srer_shortcode_features'));
+            add_shortcode('property_city', array($this, 'ay_srer_shortcode_city'));
 
-            add_shortcode('ay_srer_search_form', array( $this, 'ay_srer_search_form'));
+            add_shortcode('property_features', array($this, 'ay_srer_shortcode_features'));
+
+            add_shortcode('ay_srer_search_form', array($this, 'ay_srer_search_form'));
         }
 
         // Price shortcode
-        public function ay_srer_shortcode_price() {
+        public function ay_srer_shortcode_price()
+        {
             global $post;
             $price = get_post_meta($post->ID, '_ay_srer_price', true);
             return $price ? esc_html($price) : '';
         }
 
         // Currency shortcode
-        public function ay_srer_shortcode_currency() {
+        public function ay_srer_shortcode_currency()
+        {
             global $post;
             $currency = get_post_meta($post->ID, '_ay_srer_currency', true);
             return $currency ? esc_html($currency) : '';
         }
 
         // Rooms shortcode
-        public function ay_srer_shortcode_rooms() {
+        public function ay_srer_shortcode_rooms()
+        {
             global $post;
             $rooms = get_post_meta($post->ID, '_ay_srer_rooms', true);
             return $rooms ? esc_html($rooms) : '';
         }
 
         // Address shortcode
-        public function ay_srer_shortcode_address() {
+        public function ay_srer_shortcode_address()
+        {
             global $post;
             $address = get_post_meta($post->ID, '_ay_srer_address', true);
             return $address ? esc_html($address) : '';
         }
 
         // Area shortcode
-        public function ay_srer_shortcode_area() {
+        public function ay_srer_shortcode_area()
+        {
             global $post;
             $area = get_post_meta($post->ID, '_ay_srer_area', true);
             return $area ? esc_html($area) : '';
         }
 
         // Floor shortcode
-        public function ay_srer_shortcode_floor() {
+        public function ay_srer_shortcode_floor()
+        {
             global $post;
             $floor = get_post_meta($post->ID, '_ay_srer_floor', true);
             return $floor ? esc_html($floor) : '';
         }
 
         // Building age shortcode
-        public function ay_srer_shortcode_building_age() {
+        public function ay_srer_shortcode_building_age()
+        {
             global $post;
             $building_age = get_post_meta($post->ID, '_ay_srer_building_age', true);
             return $building_age ? esc_html($building_age) : '';
         }
 
         // Property type shortcode
-        public function ay_srer_shortcode_property_type() {
+        public function ay_srer_shortcode_property_type()
+        {
             global $post;
             $types = get_post_meta($post->ID, '_ay_srer_property_type', true);
             return is_array($types) ? implode(', ', array_map('esc_html', $types)) : '';
         }
 
         // City shortcode
-        public function ay_srer_shortcode_city() {
+        public function ay_srer_shortcode_city()
+        {
             global $post;
             $terms = get_the_terms($post->ID, 'city');
             if ($terms && !is_wp_error($terms)) {
@@ -98,7 +109,8 @@ if (! class_exists('AY_SRER_Shortcode')) {
         }
 
         // Features shortcode
-        public function ay_srer_shortcode_features() {
+        public function ay_srer_shortcode_features()
+        {
             global $post;
             $terms = get_the_terms($post->ID, 'feature');
             if ($terms && !is_wp_error($terms)) {
@@ -112,7 +124,8 @@ if (! class_exists('AY_SRER_Shortcode')) {
         }
 
         // Search form shortcode
-        public function ay_srer_search_form() {
+        public function ay_srer_search_form()
+        {
             //$cities = get_terms(['taxonomy' => 'city', 'hide_empty' => false]);
 
             $cities = get_terms(array(
@@ -134,12 +147,12 @@ if (! class_exists('AY_SRER_Shortcode')) {
                     $sub_cities_by_parent[$city->parent][] = $city;
                 }
             }
-            ?>
+?>
             <form id="ay-srer-search-form" method="GET" action="<?php echo esc_url(home_url('/')); ?>">
                 <div class="form-col">
                     <div class="form-group">
-                        <label for="property-type"><?php __('Property Type', 'ay-simple-real-estate'); ?></label>
-                        <select name="property-type">
+                        <label for="property-type-list"><?php echo esc_html__('Property Type', 'ay-simple-real-estate'); ?></label>
+                        <select name="property-type-list">
                             <option value=""><?php echo esc_html__('All', 'ay-simple-real-estate'); ?></option>
                             <option value="Apartment"><?php echo esc_html__('Apartment', 'ay-simple-real-estate'); ?></option>
                             <option value="Villa"><?php echo esc_html__('Villa', 'ay-simple-real-estate'); ?></option>
@@ -148,20 +161,20 @@ if (! class_exists('AY_SRER_Shortcode')) {
                             <option value="Bungalow"><?php echo esc_html__('Bungalow', 'ay-simple-real-estate'); ?></option>
                             <option value="Detached House"><?php echo esc_html__('Detached House', 'ay-simple-real-estate'); ?></option>
                         </select>
-                    </div> 
-                    
+                    </div>
+
                     <div class="form-group">
                         <label for="city"><?php echo esc_html__('City', 'ay-simple-real-estate'); ?></label>
                         <select id="search_city" name="city">
                             <option value=""><?php echo esc_html__('Select a city', 'ay-simple-real-estate'); ?></option>
                             <?php foreach ($cities as $city) : ?>
-                                <option value="<?php echo esc_attr($city->term_id); ?>">
+                                <option cityId="<?php echo esc_attr($city->term_id); ?>" value="<?php echo esc_attr($city->slug); ?>">
                                     <?php echo esc_html($city->name); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-
+                    <?php /*
                     <div class="form-group">
                         <label for="district"><?php echo esc_html__('District', 'ay-simple-real-estate'); ?></label>
                         <select id="search_district" name="district">
@@ -169,6 +182,7 @@ if (! class_exists('AY_SRER_Shortcode')) {
                             <!-- Districts will be dynamically populated based on the selected city -->
                         </select>
                     </div>
+                    */ ?>
                     <div class="form-group">
                         <label for="rooms"><?php echo esc_html__('Rooms', 'ay-simple-real-estate'); ?></label>
                         <input type="number" name="rooms" min="0">
@@ -187,7 +201,7 @@ if (! class_exists('AY_SRER_Shortcode')) {
                     </div>
 
                     <div class="form-group">
-                        <label for="property-type"><?php __('Rent or Buy', 'ay-simple-real-estate'); ?></label>
+                        <label for="property-type"><?php echo esc_html__('Rent or Buy', 'ay-simple-real-estate'); ?></label>
                         <select name="property-type">
                             <option value=""><?php echo esc_html__('Both', 'ay-simple-real-estate'); ?></option>
                             <option value="rent"><?php echo esc_html__('Rent', 'ay-simple-real-estate'); ?></option>
@@ -200,7 +214,7 @@ if (! class_exists('AY_SRER_Shortcode')) {
                     </div>
                 </div>
             </form>
-
+            <?php /*
             <script type="text/javascript">
                 document.addEventListener('DOMContentLoaded', function() {
                     // Sub-cities data from PHP
@@ -219,7 +233,7 @@ if (! class_exists('AY_SRER_Shortcode')) {
                         if (subCitiesByParent[parentCityId]) {
                             subCitiesByParent[parentCityId].forEach(function(subCity) {
                                 var option = document.createElement('option');
-                                option.value = subCity.term_id;
+                                option.value = subCity.slug;
                                 option.textContent = subCity.name;
                                 districtSelect.appendChild(option);
                             });
@@ -228,12 +242,14 @@ if (! class_exists('AY_SRER_Shortcode')) {
 
                     // Listen for changes in the city dropdown
                     citySelect.addEventListener('change', function() {
-                        var selectedCityId = citySelect.value;
+                        var selectedCityId = citySelect.cityId;
+                        
                         updateDistricts(selectedCityId);
                     });
                 });
             </script>
-            <?php
+            */ ?>
+<?php
         }
     }
 }
