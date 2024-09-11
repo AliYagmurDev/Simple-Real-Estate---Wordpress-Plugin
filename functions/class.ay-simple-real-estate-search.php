@@ -37,15 +37,15 @@ if (! class_exists('AY_SRER_Search')) {
                 $citiy = filter_input(INPUT_GET, 'city', FILTER_SANITIZE_NUMBER_INT);
                 $district = filter_input(INPUT_GET, 'district', FILTER_SANITIZE_NUMBER_INT);
                 //find the slug values of the city and district from city taxonomy by term_id
-                $citySlug = get_term($citiy, 'city')->slug;
-                $districtSlug = get_term($district, 'city')->slug;
+                //$citySlug = get_term($citiy, 'city')->slug;
+                //$districtSlug = get_term($district, 'city')->slug;
 
 
                 $toBeUsed = '';
                 if ($citiy) {
-                    $toBeUsed = $citySlug;
+                    $toBeUsed = $citiy;
                     if($district) { 
-                        $toBeUsed = $districtSlug;
+                        $toBeUsed = $district;
                     }
                     $toBeUsed = intval($toBeUsed);
                     $tax_query = $query->get('tax_query') ?: [];

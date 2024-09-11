@@ -10,6 +10,8 @@ if (! class_exists('AY_SRER_Shortcode')) {
 
             add_shortcode('property_price', array($this, 'ay_srer_shortcode_price'));
 
+            add_shortcode('property_currency', array($this, 'ay_srer_shortcode_currency'));
+
             add_shortcode('property_rooms', array($this, 'ay_srer_shortcode_rooms'));
 
             add_shortcode('property_address', array($this, 'ay_srer_shortcode_address'));
@@ -34,6 +36,8 @@ if (! class_exists('AY_SRER_Shortcode')) {
         {
             global $post;
             $price = get_post_meta($post->ID, '_ay_srer_price', true);
+            $price = floatval($price);
+            $price = number_format($price);
             return $price ? esc_html($price) : '';
         }
 
